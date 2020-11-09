@@ -1,0 +1,37 @@
+.Grid {
+    width: 670px;
+    height: 200px;
+    background-color:  #282c34;
+}
+
+.Title {
+    font-weight: bold;
+    font-size: 18pt;
+}
+
+.GridVideo {
+    position: absolute;
+    width:275px;
+    height:200px;
+}
+
+.GridBody {
+    margin-left: 280px;
+}
+
+.Thumbs {
+    color:#909090;
+}
+
+.desctiption {
+    margin-top: 15px;
+}
+
+.desctiption b{
+    font-size: 14pt;
+}
+
+
+.desctiption p{
+    font-size: 10pt;
+}

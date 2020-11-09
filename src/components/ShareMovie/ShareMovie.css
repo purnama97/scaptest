@@ -1,0 +1,29 @@
+@media only screen and (min-width: 768px) {
+    .Share {
+        width: 40%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .Share {
+        width: 80%;
+    }
+
+    .button {
+        background: #FF0000;
+        color:#FFFFFF;
+        margin-top: 20px;
+    }
+}
+
+.title {
+    text-align: left;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.button {
+    background: #FF0000;
+    color:#FFFFFF;
+}
+
