@@ -2,11 +2,12 @@
     width: 670px;
     height: 200px;
     background-color:  #282c34;
+    margin-bottom: 10px;
 }
 
 .Title {
     font-weight: bold;
-    font-size: 18pt;
+    font-size: 13pt;
 }
 
 .GridVideo {

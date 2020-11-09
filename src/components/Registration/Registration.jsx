@@ -1,10 +1,17 @@
 import React, {useState} from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import {
+    REGISTRATION_REQUESTED
+} from '../../constans/action-types'
+
 
 const Registration = ( {
         show,
         onHide,
-        handleShow
+        handleShow,
+        registration
     }) => { 
     const [data, setData] = useState({});
     
@@ -12,8 +19,11 @@ const Registration = ( {
         setData({ 
             ...data, [event.target.name]: event.target.value 
         })
+    }
 
-        console.log(data)
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        registration(data)
     }
     
     return(
@@ -23,7 +33,7 @@ const Registration = ( {
                 <Modal.Title className="box-header with-border">
                     <h3 style={{color:'#FFFFFF'}}>Login</h3>
                 </Modal.Title>
-                <Form method="post">
+                <Form method="post" onSubmit={handleSubmit}>
                     <Form.Group controlId="formBasicEmail">
 						<Form.Control type="email" bsPrefix style={styles.inputan} className="inputan" name="email" value={data ? data.email:""} onChange={handleChange} placeholder="Email" required/>
 					</Form.Group>
@@ -99,4 +109,17 @@ const styles = {
     }
 }
 
-export default Registration;
+
+Registration.propTypes = {
+    registration: PropTypes.func.isRequired,
+}
+
+const mapStateToProps = (state) => ({
+    registration: state.registration
+})
+  
+const mapDispatchToProps = (dispatch) => ({
+    registration: (data) => dispatch({type: REGISTRATION_REQUESTED, payload: {data}})
+})
+  
+export default connect(mapStateToProps, mapDispatchToProps)(Registration)

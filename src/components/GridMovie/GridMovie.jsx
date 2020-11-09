@@ -4,43 +4,76 @@ import './GridMovie.css';
 import { Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons'
-import YouTube from 'react-youtube';
-import axios from 'axios';
+import ReactPlayer from 'react-player';
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import {
+    GET_MOVIE_REQUESTED
+} from '../../constans/action-types'
 
-const GridMovie = () => {
-    
+const GridMovie = ({
+    movie:{data, loading, error},
+    getMovie
+}) => {
 
-    const onReady = (event) => {
-        event.target.pauseVideo();
-    }
+    useEffect(() => {
+        getMovie()
+    },[getMovie]);
 
-    const opts = {
-        height: '390',
-        width: '640',
-        playerVars: {
-          autoplay: 0,
-        },
-    };
+    console.log(error)
+    console.log(loading)
+    console.log(data)
+   
 
     return (
         <>
+        {/* {loading ? (
+            <>Loading ..</>
+        ):( */}
+            halaman
+            {/* data ? ( data.map((x,y) => (
+            <>
             <Card className="Grid">
-           <YouTube className="GridVideo" videoId="Vz264WxECjQ" opts={opts} onReady={onReady} />
+            <ReactPlayer 
+                url={`https://www.youtube.com/watch?v=${x.id}`} 
+                className="GridVideo"  
+                width='40%'
+                height='100%'
+            />
             <Card.Body className="GridBody">
-                <Card.Title className="Title">Title Movie</Card.Title>
-                <Card.Link href="#" className="Thumbs"><FontAwesomeIcon icon={faThumbsUp} size="lg" /></Card.Link>
-                <Card.Link href="#" className="Thumbs"><FontAwesomeIcon icon={faThumbsDown} size="lg" /></Card.Link>
+                <Card.Title className="Title">{x.title}</Card.Title>
+                <Card.Link href="#" className="Thumbs">{x.statistics.likeCount} <FontAwesomeIcon icon={faThumbsUp} size="lg" /></Card.Link>
+                <Card.Link href="#" className="Thumbs">{x.statistics.dislikeCount} <FontAwesomeIcon icon={faThumbsDown} size="lg" /></Card.Link>
                 <Card.Text className="desctiption">
                 <b>Description</b>
                 <p>
-                Some quick example text to build on the card title and make up the bulk of
-                the card's content.
+                {x.description}
                 </p>
                 </Card.Text>
             </Card.Body>
             </Card>
+            </> */}
+        {/* )) */}
+        {/* ):(
+            <> Data Tidak Ada </>
+        ))
+        } */}
+            
         </>
     )
 }
 
-export default  GridMovie;
+GridMovie.propTypes = {
+    getMovie: PropTypes.object.isRequired,
+    movie: PropTypes.object.isRequired
+}
+
+const mapStateToProps = (state) => ({
+    movie: state.movie
+})
+  
+const mapDispatchToProps = (dispatch) => ({
+    getMovie: () => dispatch({ type: GET_MOVIE_REQUESTED })
+})
+  
+export default connect(mapStateToProps, mapDispatchToProps)(GridMovie)
