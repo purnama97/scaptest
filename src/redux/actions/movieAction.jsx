@@ -16,7 +16,7 @@ const getYoutube = async (id) => {
   return data;
 }
 
-export default async (action, data) => {
+const movieAction = async (action, data) => {
   switch(action) {
     case "share" :
       try {
@@ -37,6 +37,7 @@ export default async (action, data) => {
       }catch (error) {
         console.log(error)    
       }
+      break
       case "get" :
       try {
         const dataMovie = JSON.parse(localStorage.getItem("movie"));
@@ -44,8 +45,10 @@ export default async (action, data) => {
       }catch (error) {
         console.log(error)    
       }
+    break
     default:
       console.log("hallo world")
   }
- 
 }
+
+export default movieAction;

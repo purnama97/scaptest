@@ -31,7 +31,7 @@ const Registration = ( {
         <Modal style={styles.modal} show={show} onHide={onHide}>
             <Modal.Body style={styles.modalBody}>
                 <Modal.Title className="box-header with-border">
-                    <h3 style={{color:'#FFFFFF'}}>Login</h3>
+                    <h3 style={{color:'#FFFFFF'}}>REGISTRATION</h3>
                 </Modal.Title>
                 <Form method="post" onSubmit={handleSubmit}>
                     <Form.Group controlId="formBasicEmail">

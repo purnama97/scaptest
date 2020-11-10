@@ -61,7 +61,7 @@
 // export default  ShareMovie;
 
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './ShareMovie.css';
 import { Form, Row, Col, Button } from 'react-bootstrap';

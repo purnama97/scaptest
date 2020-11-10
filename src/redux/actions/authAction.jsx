@@ -1,12 +1,13 @@
-export default async (action, data) => {
+const auth = async (action, data) => {
   switch(action) {
     case "login" :
       try {
         const dataLogin = {data:data}
-        return data;
+        return dataLogin;
       }catch (error) {
         console.log(error)    
       }
+    break
       case "registration" :
       try {
         let user;
@@ -25,8 +26,10 @@ export default async (action, data) => {
       }catch (error) {
         console.log(error)    
       }
+    break
     default:
       console.log("hallo world")
   }
- 
 }
+
+export default auth;

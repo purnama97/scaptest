@@ -1,17 +1,31 @@
 import React from 'react';
 import "./css/App.css";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
 import Navigation from './components/Navigation/Navigation';
-import GridMovie from './components/GridMovie/GridMovie';
+import Movie from './pages/Movie';
 import ShareMovie from './components/ShareMovie/ShareMovie';
 
 const App = () => {
   return (
     <>
-      <Navigation />
-      <div className="App">
-        {/* <ShareMovie /> */}
-        <GridMovie />
-      </div>
+    <div className="App">
+    <Router>
+    <Navigation />
+        <Switch>
+            <Route path="/share">
+              <ShareMovie />
+            </Route>
+            <Route path="/">
+              <Movie />
+            </Route>
+        </Switch>
+    </Router>
+    </div>
     </>
   )
 }

@@ -4,7 +4,8 @@ import {
     LOGIN_FAILED,
     REGISTRATION_REQUESTED,
     REGISTRATION_SUCCESS,
-    REGISTRATION_FAILED
+    REGISTRATION_FAILED,
+    LOGOUT_SUCCESS,
 } from '../../constans/action-types'
 
 const initialState = {
@@ -14,8 +15,7 @@ const initialState = {
     error: null,
 }
   
-function movieReducer(state = initialState, action) {
-  console.log(action.type)
+function authReducer(state = initialState, action) {
     switch (action.type) {
       case REGISTRATION_REQUESTED:
       case LOGIN_REQUESTED:
@@ -40,9 +40,16 @@ function movieReducer(state = initialState, action) {
           error: action.message,
           isLogin:false,
         }
+      case LOGOUT_SUCCESS: 
+        return {
+          ...state,
+          loading: false,
+          data:{},
+          isLogin:false
+        }
       default:
         return state
     }
 }
 
-export default movieReducer;
+export default authReducer;

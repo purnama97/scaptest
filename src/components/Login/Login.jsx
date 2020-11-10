@@ -1,11 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
+import {
+    LOGIN_REQUESTED
+} from '../../constans/action-types'
 
 const Login = ( {
         show,
         onHide,
-        handleShow
+        handleShow,
+        login
     }) => { 
+    
+    const [data, setData] = useState({});
+    const handleChange = (event) => {
+        setData({ 
+            ...data, [event.target.name]: event.target.value 
+        })
+    }
+    
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        login(data)
+    }
+
     return(
     <>
         <Modal style={styles.modal} show={show} onHide={onHide}>
@@ -13,16 +32,16 @@ const Login = ( {
                 <Modal.Title className="box-header with-border">
                     <h3 style={{color:'#FFFFFF'}}>Login</h3>
                 </Modal.Title>
-                <Form method="post">
+                <Form method="post" onSubmit={handleSubmit}>
                     <Form.Group controlId="formBasicEmail">
-                          <Form.Control type="email" bsPrefix style={styles.inputan} name="email" placeholder="Enter email" required/>
+                          <Form.Control type="email" bsPrefix style={styles.inputan} name="email" value={data ? data.email:""} onChange={handleChange} placeholder="Enter email" required/>
                           {//<Form.Text className="text-muted">
                             //We'll never share your email with anyone else.
                           //</Form.Text>}
                           }
                         </Form.Group>
                         <Form.Group controlId="formBasicPassword">
-                          <Form.Control type="password" bsPrefix style={styles.inputan} name="password" placeholder="Enter Password" required/>
+                          <Form.Control type="password" bsPrefix style={styles.inputan} name="password" value={data ? data.password:""} onChange={handleChange} placeholder="Enter Password" required/>
                           {//<Form.Text className="text-muted">
                             //We'll never share your email with anyone else.
                           //</Form.Text>}onClick={() => this.props.handleLoginClick()}
@@ -82,4 +101,16 @@ const styles = {
     }
 }
 
-export default Login;
+Login.propTypes = {
+    login: PropTypes.func.isRequired,
+}
+
+const mapStateToProps = (state) => ({
+    login: state.auth
+})
+  
+const mapDispatchToProps = (dispatch) => ({
+    login: (data) => dispatch({type: LOGIN_REQUESTED, payload: {data}})
+})
+  
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

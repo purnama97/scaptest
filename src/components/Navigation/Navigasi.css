@@ -14,6 +14,10 @@ Button {
     border-radius: 10px;
 }
 
+.users {
+    color:#FFFFFF;
+    margin-right: 60px;
+}
 .btn-red {
     background: rgb(255,0,0);
     color:#FFFFFF;
@@ -30,6 +34,11 @@ Button {
     background:#FFFFFF;
     color: rgb(255,0,0);
     border-color:  rgb(255,0,0);
+}
+
+.link-white {
+    margin-right:10px;
+    width:100px;
 }
 
 .btn-white:hover {
