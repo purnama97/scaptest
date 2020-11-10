@@ -37,7 +37,7 @@ function authReducer(state = initialState, action) {
         return {
           ...state,
           loading: false,
-          error: action.message,
+          error: action.error,
           isLogin:false,
         }
       case LOGOUT_SUCCESS: 

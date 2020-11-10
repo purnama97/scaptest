@@ -14,7 +14,6 @@ const initialState = {
 }
   
 function movieReducer(state = initialState, action) {
-  console.log(action.type)
     switch (action.type) {
       case POST_MOVIE_REQUESTED:
       case GET_MOVIE_REQUESTED:
@@ -35,7 +34,7 @@ function movieReducer(state = initialState, action) {
         return {
           ...state,
           loading: false,
-          error: action.message,
+          error: action.error,
         }
       default:
         return state

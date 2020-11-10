@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import Navigation from './components/Navigation/Navigation';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Movie from './pages/Movie';
 import ShareMovie from './components/ShareMovie/ShareMovie';
 
@@ -17,9 +18,7 @@ const App = () => {
     <Router>
     <Navigation />
         <Switch>
-            <Route path="/share">
-              <ShareMovie />
-            </Route>
+            <PrivateRoute path="/share" component={ShareMovie} />
             <Route path="/">
               <Movie />
             </Route>

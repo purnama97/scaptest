@@ -2,6 +2,7 @@ import { API } from '../../config/api';
 import env from "react-dotenv";
 
 const getYoutube = async (id) => {
+  try {
   const {
     data: dataMovie
   } = await API.get(`videos?id=${id}&key=${env.REACT_APP_YOUTUBE_KEY}&part=snippet,contentDetails,statistics,status`)
@@ -13,7 +14,10 @@ const getYoutube = async (id) => {
       publishedAt:dataMovie.items[0].snippet.publishedAt,
       statistics: dataMovie.items[0].statistics,
   }
-  return data;
+    return data;
+  }catch(error) {
+    console.log(error)
+  }
 }
 
 const movieAction = async (action, data) => {
@@ -22,16 +26,17 @@ const movieAction = async (action, data) => {
       try {
         const dataMovie =  await getYoutube(data);
 
+        if(!dataMovie) return {error:{message:"Movie Not Found!"}}
         let movie;
-        if (localStorage.getItem('movie')===null)
+        if (localStorage.getItem('movies')===null)
         {
           movie= [];
         }else{
-          movie = JSON.parse(localStorage.getItem('movie'));	
+          movie = JSON.parse(localStorage.getItem('movies'));	
         }
         
         movie.push(dataMovie);	
-        localStorage.setItem('movie',JSON.stringify(movie))
+        localStorage.setItem('movies',JSON.stringify(movie))
         
         return dataMovie;
       }catch (error) {
@@ -40,7 +45,7 @@ const movieAction = async (action, data) => {
       break
       case "get" :
       try {
-        const dataMovie = JSON.parse(localStorage.getItem("movie"));
+        const dataMovie = JSON.parse(localStorage.getItem("movies"));
         return dataMovie;
       }catch (error) {
         console.log(error)    

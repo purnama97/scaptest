@@ -13,7 +13,7 @@ const Login = ( {
         login
     }) => { 
     
-    const [data, setData] = useState({});
+    const [data, setData] = useState({email:"",password:""});
     const handleChange = (event) => {
         setData({ 
             ...data, [event.target.name]: event.target.value 
@@ -35,17 +35,9 @@ const Login = ( {
                 <Form method="post" onSubmit={handleSubmit}>
                     <Form.Group controlId="formBasicEmail">
                           <Form.Control type="email" bsPrefix style={styles.inputan} name="email" value={data ? data.email:""} onChange={handleChange} placeholder="Enter email" required/>
-                          {//<Form.Text className="text-muted">
-                            //We'll never share your email with anyone else.
-                          //</Form.Text>}
-                          }
                         </Form.Group>
                         <Form.Group controlId="formBasicPassword">
                           <Form.Control type="password" bsPrefix style={styles.inputan} name="password" value={data ? data.password:""} onChange={handleChange} placeholder="Enter Password" required/>
-                          {//<Form.Text className="text-muted">
-                            //We'll never share your email with anyone else.
-                          //</Form.Text>}onClick={() => this.props.handleLoginClick()}
-                          }
                     </Form.Group>
                     <Button type="submit" variant="danger" style={styles.Btn} className="btn btn-user">Login</Button>
                 </Form>

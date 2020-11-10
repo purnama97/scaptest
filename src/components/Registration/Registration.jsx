@@ -13,7 +13,7 @@ const Registration = ( {
         handleShow,
         registration
     }) => { 
-    const [data, setData] = useState({});
+    const [data, setData] = useState({email: "", password: "", fullName: "", gender: "", phone: "", address:""});
     
     const handleChange = (event) => {
         setData({ 

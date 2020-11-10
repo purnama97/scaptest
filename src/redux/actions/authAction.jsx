@@ -2,8 +2,11 @@ const auth = async (action, data) => {
   switch(action) {
     case "login" :
       try {
-        const dataLogin = {data:data}
-        return dataLogin;
+        if (localStorage.getItem('users')===null) return {error:{message:"Login Invalid"}}
+        const user = JSON.parse(localStorage.getItem("users", "email"));
+        const cekUser = user.find(el => el.email === data.email && el.password === data.password)
+        if(!cekUser) return {error:{message:"Login Invalid"}}
+        return cekUser;
       }catch (error) {
         console.log(error)    
       }
@@ -20,9 +23,8 @@ const auth = async (action, data) => {
         
         user.push(data);	
         localStorage.setItem('users',JSON.stringify(user))
-        
-        const dataRegister =  {data:data}
-        return dataRegister;
+    
+        return data;
       }catch (error) {
         console.log(error)    
       }

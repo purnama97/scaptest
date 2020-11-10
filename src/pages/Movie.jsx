@@ -29,7 +29,7 @@ const Movie = ({
 }
 
 Movie.propTypes = {
-    getMovie: PropTypes.object.isRequired,
+    getMovie: PropTypes.func.isRequired,
     movie: PropTypes.object.isRequired
 }
 

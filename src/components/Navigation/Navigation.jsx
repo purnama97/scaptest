@@ -47,9 +47,9 @@ const Navigation = ({
             {isLogin ? (
                 <>
                 <Navbar.Text>
-                    <div  className="users">Hi, {loading ? "loading..":data.data.fullName}</div>
+                    <div  className="users">Hi, {loading ? "loading..":data.fullName}</div>
                 </Navbar.Text>
-                <Link to="/share" className='btn btn-md btn-danger link-white'>Share</Link>
+                <Link to="/share" className='btn btn-md btn-danger link-white'>Share Movie</Link>
                 <Button variant={'outline-danger'} onClick={handleLogout} className="btn-white">Logout</Button>
                 </>
             ):(

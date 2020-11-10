@@ -6,6 +6,13 @@
 .brand {
     color:#FFFFFF;
     font-weight: bold;
+    text-decoration: none;
+}
+
+.brand:hover {
+    color:#FFFFFF;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 Button {
@@ -38,7 +45,7 @@ Button {
 
 .link-white {
     margin-right:10px;
-    width:100px;
+    width:150px;
 }
 
 .btn-white:hover {

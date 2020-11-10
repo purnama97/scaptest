@@ -17,8 +17,8 @@ import apiAuth from '../actions/authAction';
 // //middleware functions
 function* login(action) {
   try {
-    const user = yield call(apiAuth, "login", action.payload);
-    user.data ? yield put({type: LOGIN_SUCCESS, data:user.data}) : yield put({type: LOGIN_FAILED, message:user.error});
+    const user = yield call(apiAuth, "login", action.payload.data);
+    user.error ? yield put({type: LOGIN_FAILED, error:user.error}) : yield put({type: LOGIN_SUCCESS, data:user});
   } catch (error) {
     yield put({ type:  LOGIN_FAILED, payload: error });
   }
@@ -26,8 +26,8 @@ function* login(action) {
 
 function* registration(action) {
   try {
-    const user = yield call(apiAuth, "registration", action.payload);
-    user.data ? yield put({type: REGISTRATION_SUCCESS, data:user.data}) : yield put({type: REGISTRATION_FAILED, message:user.error});
+    const user = yield call(apiAuth, "registration", action.payload.data);
+    user ? yield put({type: REGISTRATION_SUCCESS, data:user}) : yield put({type: REGISTRATION_FAILED, message:user.error});
   } catch (error) {
     yield put({ type:  REGISTRATION_FAILED, payload: error });
   }

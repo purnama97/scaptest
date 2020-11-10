@@ -39,13 +39,7 @@ const GridMovie = ({
         ):(
             data != null ? data.map((x,i) => (
                 <>
-                <Card className="Grid">
-                {/* <ReactPlayer 
-                    url={`https://www.youtube.com/watch?v=${x.id}`} 
-                    className="GridVideo"  
-                    width='40%'
-                    height='100%'
-                /> */}
+                <Card className="Grid" key={i}>
                 <YouTube className="GridVideo" videoId={x.id} opts={opts} onReady={_onReady} />
                 <Card.Body className="GridBody">
                     <Card.Title className="Title">{x.title}</Card.Title>

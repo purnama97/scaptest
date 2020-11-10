@@ -24,7 +24,7 @@ function* getMovie() {
 function* shareMovie(action) {
   try {
     const movie = yield call(apiMovie, "share", action.payload.idVideo);
-    yield put({type: POST_MOVIE_SUCCESS, data:movie});
+    movie.error ? yield put({type: POST_MOVIE_FAILED, error:movie.error}):yield put({type: POST_MOVIE_SUCCESS, data:movie});
   } catch (error) {
     yield put({ type:  POST_MOVIE_FAILED, payload: error });
   }
