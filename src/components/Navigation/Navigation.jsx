@@ -40,7 +40,7 @@ const Navigation = ({
     return (
         <>
         <Navbar className="navbar" fixed={'top'} expand="lg">
-        <Navbar.Brand><Link to="/" className="brand">Funny Movie { isLogin ? "Aku":"Kamu" }</Link></Navbar.Brand>
+        <Navbar.Brand><Link to="/" className="brand">Funny Movie</Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto" />
