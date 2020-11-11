@@ -27,7 +27,7 @@ function* login(action) {
 function* registration(action) {
   try {
     const user = yield call(apiAuth, "registration", action.payload.data);
-    user ? yield put({type: REGISTRATION_SUCCESS, data:user}) : yield put({type: REGISTRATION_FAILED, message:user.error});
+    user.error ? yield put({type: REGISTRATION_FAILED, error:user.error}):yield put({type: REGISTRATION_SUCCESS, data:user});
   } catch (error) {
     yield put({ type:  REGISTRATION_FAILED, payload: error });
   }

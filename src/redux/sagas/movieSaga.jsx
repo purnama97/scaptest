@@ -15,7 +15,7 @@ import apiMovie from '../actions/movieAction';
 function* getMovie() {
   try {
     const movie = yield call(apiMovie, "get");
-    yield put({type: GET_MOVIE_SUCCESS, data:movie});
+    movie.error ? yield put({type: GET_MOVIE_FAILED, error:movie.error}):yield put({type: GET_MOVIE_SUCCESS, data:movie});
   } catch (error) {
     yield put({ type:  GET_MOVIE_FAILED, payload: error });
   }

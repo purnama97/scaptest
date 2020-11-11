@@ -13,9 +13,6 @@ const auth = async (action, data) => {
     break
       case "registration" :
       try {
-        const dataUser = JSON.parse(localStorage.getItem("users"));
-        const cekUser = dataUser.find(el => el.email === data.email)
-        if(!cekUser) return {error:{message:"Email is registered"}}
         let user;
         if (localStorage.getItem('users')===null)
         {
@@ -23,7 +20,6 @@ const auth = async (action, data) => {
         }else{
           user = JSON.parse(localStorage.getItem('users'));	
         }
-        
         user.push(data);	
         localStorage.setItem('users',JSON.stringify(user))
     

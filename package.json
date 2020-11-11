@@ -52,7 +52,7 @@
   },
   "react-dotenv": {
     "whitelist": [
-      "REACT_APP_YOUTUBE_KEY",
+      "REACT_APP_API_KEY",
       "REACT_APP_PLAYLIS_ID",
       "REACT_APP_OAUTH2_TOKEN"
     ]

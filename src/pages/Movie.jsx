@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import GridMovie from '../components/GridMovie/GridMovie';
 import Loading from '../components/Loading/Loading';
+import Message from '../components/Message/Message';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
@@ -20,6 +21,8 @@ const Movie = ({
         <>
         {loading ? (
             <Loading />
+        ):error ? (
+            <Message message={error.message} variant={'danger'} />
         ):(
             <GridMovie data={data} />
         )
