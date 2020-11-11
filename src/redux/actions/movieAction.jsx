@@ -17,9 +17,8 @@ const movieAction = async (action, data) => {
         }
         
         try {
-          // setAuthToken(env.REACT_APP_OAUTH2_TOKEN)
-          setAuthToken('ya29.A0AfH6SMBpBhCyJ6jX12SUrAKUBnd3kzBC7gFzbTy7CxGvibJYoOSOK8HJEa0khuFtgda7anDU_EvUiqcIQyFrrAHpdxbJZ8alUMIhbFzFcjd1Zl0tjECZZx79XzEWWeDDoTMTDanWJIry7lHWoIusGYBspCkvkzefeCHPabNe54k')
-          const {
+        setAuthToken(env.REACT_APP_OAUTH2_TOKEN)
+         const {
             data: dataMovie
           } = await API.post('https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet', dataShare)
           return dataMovie;
