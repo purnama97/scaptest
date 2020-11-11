@@ -1033,6 +1033,11 @@
   resolved "https://registry.yarnpkg.com/@csstools/normalize.css/-/normalize.css-10.1.0.tgz#f0950bba18819512d42f7197e56c518aa491cf18"
   integrity sha512-ij4wRiunFfaJxjB0BdrYHIH8FxBJpOwNPhhAcunlmPdXudL1WQV1qoP9un6JsEBAgQH+7UXyyjh0g7jTxXK6tg==
 
+"@dataak/string-cutter@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@dataak/string-cutter/-/string-cutter-1.0.0.tgz#e15356fe4eeed973b7405b3b243008fc817e9c4e"
+  integrity sha512-4c+LBAEgYR4o00LAEON5hl9SIZ9FBYJxZQ3dhUHq7WQIggXaHIvOeLAoxRSOawlEfDptJVI+i/gIMCzFiajXXA==
+
 "@eslint/eslintrc@^0.1.3":
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-0.1.3.tgz#7d1a2b2358552cc04834c0979bd4275362e37085"

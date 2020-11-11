@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import GridMovie from '../components/GridMovie/GridMovie';
+import Loading from '../components/Loading/Loading';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
@@ -18,7 +19,7 @@ const Movie = ({
     return (
         <>
         {loading ? (
-            <>Loading ..</>
+            <Loading />
         ):(
             <GridMovie data={data} />
         )

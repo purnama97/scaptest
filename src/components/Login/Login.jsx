@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { Modal, Form, Button } from 'react-bootstrap';
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import {
     LOGIN_REQUESTED
-} from '../../constans/action-types'
+} from '../../constans/action-types';
 
 const Login = ( {
         show,
         onHide,
         handleShow,
-        login
+        login,
+        auth:{error}
     }) => { 
     
     const [data, setData] = useState({email:"",password:""});
@@ -23,6 +24,7 @@ const Login = ( {
     const handleSubmit = (event) => {
         event.preventDefault();
         login(data)
+        setData({email:"",password:""})
     }
 
     return(
@@ -30,7 +32,8 @@ const Login = ( {
         <Modal style={styles.modal} show={show} onHide={onHide}>
             <Modal.Body style={styles.modalBody}>
                 <Modal.Title className="box-header with-border">
-                    <h3 style={{color:'#FFFFFF'}}>Login</h3>
+                    <h3 style={styles.text}>Login</h3>
+                    <p style={styles.message}>{error ? error.message:null}</p><p/>
                 </Modal.Title>
                 <Form method="post" onSubmit={handleSubmit}>
                     <Form.Group controlId="formBasicEmail">
@@ -90,15 +93,26 @@ const styles = {
     Link: {
         color: '#B1B1B1',
         fontWeight:'bold',
+    },
+
+    text: {
+        color:'#FFFFFF'
+    },
+
+    message: {
+        color:'#FFFFFF',
+        fontSize:'10pt',
+        textAlign:'center'
     }
 }
 
 Login.propTypes = {
     login: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => ({
-    login: state.auth
+    auth: state.auth
 })
   
 const mapDispatchToProps = (dispatch) => ({

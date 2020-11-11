@@ -4,15 +4,15 @@ import './Navigasi.css';
 import {Navbar, Nav, Button} from 'react-bootstrap';
 import Login from '../Login/Login';
 import Registration from '../Registration/Registration';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 import {
     Link
   } from "react-router-dom";
 
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import {
     LOGOUT_REQUESTED
-} from '../../constans/action-types'
+} from '../../constans/action-types';
 
 const Navigation = ({
     auth: {data, isLogin, loading, error},

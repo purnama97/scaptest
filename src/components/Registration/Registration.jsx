@@ -23,7 +23,8 @@ const Registration = ( {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        registration(data)
+        registration(data);
+        setData({email: "", password: "", fullName: "", gender: "", phone: "", address:""});
     }
     
     return(

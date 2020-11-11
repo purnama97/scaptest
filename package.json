@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@dataak/string-cutter": "^1.0.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.12",
@@ -51,7 +52,9 @@
   },
   "react-dotenv": {
     "whitelist": [
-      "REACT_APP_YOUTUBE_KEY"
+      "REACT_APP_YOUTUBE_KEY",
+      "REACT_APP_PLAYLIS_ID",
+      "REACT_APP_OAUTH2_TOKEN"
     ]
   }
 }

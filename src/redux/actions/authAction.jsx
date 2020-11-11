@@ -3,7 +3,7 @@ const auth = async (action, data) => {
     case "login" :
       try {
         if (localStorage.getItem('users')===null) return {error:{message:"Login Invalid"}}
-        const user = JSON.parse(localStorage.getItem("users", "email"));
+        const user = JSON.parse(localStorage.getItem("users"));
         const cekUser = user.find(el => el.email === data.email && el.password === data.password)
         if(!cekUser) return {error:{message:"Login Invalid"}}
         return cekUser;
@@ -13,6 +13,9 @@ const auth = async (action, data) => {
     break
       case "registration" :
       try {
+        const dataUser = JSON.parse(localStorage.getItem("users"));
+        const cekUser = dataUser.find(el => el.email === data.email)
+        if(!cekUser) return {error:{message:"Email is registered"}}
         let user;
         if (localStorage.getItem('users')===null)
         {

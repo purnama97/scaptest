@@ -5,17 +5,19 @@ import { Form, Row, Col, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import Message from '../Message/Message';
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import { Redirect } from "react-router-dom";
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import {
     POST_MOVIE_REQUESTED
-} from '../../constans/action-types'
+} from '../../constans/action-types';
 
 const ShareMovie = ({
     postMovie,
     movie:{ data:dataShare, error, loading }
 }) => {
     const [data, setData] = useState({linkFilm:""});
+    const [share, setShare] = useState(false);
 
     const handleChange = (event) => {
         setData({
@@ -25,8 +27,10 @@ const ShareMovie = ({
     
     const handleSubmit = (event) => {
         event.preventDefault();
-        const idVideo = data.linkFilm.split("v=");
+        const idVideo = data.linkFilm.split("?v=");
         postMovie(idVideo[1])
+        setShare(true)
+        setData({linkFilm:""})
     }
     return (
         <>
@@ -49,8 +53,10 @@ const ShareMovie = ({
                 <>loading...</>
             ): error ? (
                 <Message message={error.message} variant={'danger'}/>
-            ): dataShare ? (
+            ): dataShare && share ? (
+                <>
                 <Message message={'Share Movie Success!'} variant={'success'}/>
+                </>
             ): (
                 null
             )
